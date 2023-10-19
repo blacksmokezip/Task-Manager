@@ -21,29 +21,29 @@ msgstr ""
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: task_manager/templates/base.html:17 task_manager/templates/index.html:4
-msgid "Task Manager"
-msgstr "Менеджер задач"
+msgid "Менеджер задач"
+msgstr "Task Manager"
 
 #: task_manager/templates/base.html:24
-msgid "Users"
-msgstr "Пользователи"
+msgid "Пользователи"
+msgstr "Users"
 
 #: task_manager/templates/base.html:31
-msgid "Sign in"
-msgstr "Вход"
+msgid "Вход"
+msgstr "Sign in"
 
 #: task_manager/templates/base.html:34
-msgid "Sign up"
-msgstr "Регистрация"
+msgid "Регистрация"
+msgstr "Sign up"
 
 #: task_manager/templates/index.html:19
-msgid "Hello from Hexlet!"
-msgstr "Привет от Хекслета!"
+msgid "Привет от Хекслета!"
+msgstr "Hello from Hexlet!"
 
 #: task_manager/templates/index.html:20
-msgid "Practice programming courses"
-msgstr "Практические курсы по программированию"
+msgid "Практические курсы по программированию"
+msgstr "Practice programming courses"
 
 #: task_manager/templates/index.html:22
-msgid "Learn more"
-msgstr "Узнать больше"
+msgid "Узнать больше"
+msgstr "Learn more"
