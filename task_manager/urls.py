@@ -20,7 +20,8 @@ from task_manager import views
 from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.index, name='main'),
+    path('users/', include('task_manager.users.urls')),
     path('render/', include('render.urls')),
     path('admin/', admin.site.urls),
 ]
