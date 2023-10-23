@@ -1,5 +1,8 @@
 MANAGE := poetry run python3 manage.py
 
+dev:
+	poetry run python3 manage.py runserver
+
 start:
 	poetry run gunicorn task_manager.wsgi:application
 

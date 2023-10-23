@@ -14,6 +14,7 @@ class IndexView(View):
 
 
 class UserFormCreateView(View):
+
     def get(self, request, *args, **kwargs):
         form = UserCreateForm()
         return render(request, 'users/create.html', {'form': form})
@@ -24,3 +25,54 @@ class UserFormCreateView(View):
             form.save()
             return redirect('users')
         return render(request, 'users/create.html', {'form': form})
+
+
+class UserFormUpdateView(View):
+
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs.get('id')
+        user = User.objects.get(id=user_id)
+        form = UserCreateForm(instance=user)
+        return render(
+            request,
+            'users/update.html',
+            {
+                'form': form,
+                'user_id': user_id
+            }
+        )
+
+    def post(self, request, *args, **kwargs):
+        user_id = kwargs.get('id')
+        user = User.objects.get(id=user_id)
+        form = UserCreateForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('users')
+        return render(
+            request,
+            'users/update.html',
+            {
+                'form': form,
+                'user_id': user_id
+            }
+        )
+
+
+class UserFormDeleteView(View):
+
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs.get('id')
+        user = User.objects.get(id=user_id)
+        return render(
+            request,
+            'users/delete.html',
+            {'user': user}
+        )
+
+    def post(self, request, *args, **kwargs):
+        user_id = kwargs.get('id')
+        user = User.objects.get(id=user_id)
+        if user:
+            user.delete()
+        return redirect('users')
