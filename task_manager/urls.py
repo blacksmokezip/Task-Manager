@@ -24,6 +24,8 @@ urlpatterns = [
     path('users/', include('task_manager.users.urls')),
     path('render/', include('render.urls')),
     path('admin/', admin.site.urls),
+    path('login/', views.Login.as_view(), name="login"),
+    path('logout/', views.logout_user, name="logout"),
 ]
 
 urlpatterns += i18n_patterns(

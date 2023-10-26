@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.models import User
 from task_manager.users.forms import UserCreateForm
+from django.contrib import messages
 
 
 class IndexView(View):
@@ -23,7 +24,8 @@ class UserFormCreateView(View):
         form = UserCreateForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('users')
+            messages.success(request, 'Пользователь успешно зарегистрирован')
+            return redirect('login')
         return render(request, 'users/create.html', {'form': form})
 
 
@@ -48,6 +50,7 @@ class UserFormUpdateView(View):
         form = UserCreateForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Пользователь успешно изменен')
             return redirect('users')
         return render(
             request,
@@ -75,4 +78,5 @@ class UserFormDeleteView(View):
         user = User.objects.get(id=user_id)
         if user:
             user.delete()
+        messages.success(request, 'Пользователь успешно удален')
         return redirect('users')
