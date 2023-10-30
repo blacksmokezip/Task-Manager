@@ -27,4 +27,3 @@ def logout_user(request):
     logout(request)
     messages.info(request, 'Вы разлогинены')
     return redirect('main')
-
