@@ -22,6 +22,7 @@ from django.conf.urls.i18n import i18n_patterns
 urlpatterns = [
     path('', views.index, name='main'),
     path('users/', include('task_manager.users.urls')),
+    path('statuses/', include('task_manager.statuses.urls')),
     path('render/', include('render.urls')),
     path('admin/', admin.site.urls),
     path('login/', views.Login.as_view(), name="login"),
