@@ -3,6 +3,7 @@ from django.views import View
 from django.contrib.auth.models import User
 from task_manager.users.forms import UserCreateForm
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class IndexView(View):
@@ -29,11 +30,16 @@ class UserFormCreateView(View):
         return render(request, 'users/create.html', {'form': form})
 
 
-class UserFormUpdateView(View):
+class UserFormUpdateView(LoginRequiredMixin, View):
+
+    login_url = "login"
 
     def get(self, request, *args, **kwargs):
         user_id = kwargs.get('id')
         user = User.objects.get(id=user_id)
+        if request.user != user and not request.user.is_superuser:
+            messages.error(request, 'У вас нет прав для изменения другого пользователя.')
+            return redirect('users')
         form = UserCreateForm(instance=user)
         return render(
             request,
@@ -62,11 +68,16 @@ class UserFormUpdateView(View):
         )
 
 
-class UserFormDeleteView(View):
+class UserFormDeleteView(LoginRequiredMixin, View):
+
+    login_url = "login"
 
     def get(self, request, *args, **kwargs):
         user_id = kwargs.get('id')
         user = User.objects.get(id=user_id)
+        if request.user != user and not request.user.is_superuser:
+            messages.error(request, 'У вас нет прав для изменения другого пользователя.')
+            return redirect('users')
         return render(
             request,
             'users/delete.html',
