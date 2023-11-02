@@ -12,9 +12,7 @@ from task_manager.tasks.forms import TaskForm
 from task_manager.tasks.filters import TaskFilter
 
 
-class TasksListView(LoginRequiredMixin, FilterView):
-
-    login_url = 'login'
+class TasksListView(AuthRequiredMixin, FilterView):
 
     template_name = 'tasks/index.html'
     model = Task
@@ -28,8 +26,6 @@ class TasksListView(LoginRequiredMixin, FilterView):
 
 class TaskDetailView(AuthRequiredMixin, DetailView):
 
-    login_url = 'login'
-
     template_name = 'tasks/show.html'
     model = Task
     context_object_name = 'task'
@@ -38,9 +34,7 @@ class TaskDetailView(AuthRequiredMixin, DetailView):
     }
 
 
-class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-
-    login_url = 'login'
+class TaskCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
 
     template_name = 'tasks/create.html'
     model = Task
@@ -58,9 +52,7 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-
-    login_url = 'login'
+class TaskUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
 
     template_name = 'tasks/update.html'
     model = Task
@@ -74,8 +66,6 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
 
 class TaskDeleteView(AuthRequiredMixin, AuthorDeletionMixin, SuccessMessageMixin, DeleteView):
-
-    login_url = 'login'
 
     template_name = 'tasks/delete.html'
     model = Task

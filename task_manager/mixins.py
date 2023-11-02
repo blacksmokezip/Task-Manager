@@ -11,7 +11,7 @@ class AuthRequiredMixin(LoginRequiredMixin):
     Authentication check.
     Restricts access without authentication.
     """
-    auth_message = _('You are not logged in! Please log in.')
+    auth_message = 'Вы не авторизованы! Пожалуйста, выполните вход.'
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
