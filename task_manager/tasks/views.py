@@ -3,7 +3,6 @@ from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 from django_filters.views import FilterView
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 
 from task_manager.mixins import AuthRequiredMixin, AuthorDeletionMixin

@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
 from django.contrib.auth.models import User
 
@@ -40,6 +41,14 @@ class Task(models.Model):
         related_name='executor',
         verbose_name='Исполнитель'
     )
+    labels = models.ManyToManyField(
+        Label,
+        through='TaskLabelRelation',
+        through_fields=('task', 'label'),
+        blank=True,
+        related_name='labels',
+        verbose_name='Метки'
+    )
 
     def __str__(self):
         return self.name
@@ -47,3 +56,8 @@ class Task(models.Model):
     class Meta:
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
+
+
+class TaskLabelRelation(models.Model):
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    label = models.ForeignKey(Label, on_delete=models.PROTECT)

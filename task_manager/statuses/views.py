@@ -3,12 +3,11 @@ from django.views import View
 from task_manager.statuses.models import Status
 from task_manager.statuses.forms import StatusForm
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
+
+from task_manager.mixins import AuthRequiredMixin
 
 
-class IndexView(LoginRequiredMixin, View):
-
-    login_url = 'login'
+class IndexView(AuthRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         statuses = Status.objects.all()
@@ -17,9 +16,7 @@ class IndexView(LoginRequiredMixin, View):
         })
 
 
-class StatusFormCreateView(LoginRequiredMixin, View):
-
-    login_url = 'login'
+class StatusFormCreateView(AuthRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         form = StatusForm()
@@ -34,9 +31,7 @@ class StatusFormCreateView(LoginRequiredMixin, View):
         return render(request, 'statuses/create.html', {'form': form})
 
 
-class StatusFormUpdateView(LoginRequiredMixin, View):
-
-    login_url = 'login'
+class StatusFormUpdateView(AuthRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         status_id = kwargs.get('id')
@@ -69,9 +64,7 @@ class StatusFormUpdateView(LoginRequiredMixin, View):
         )
 
 
-class StatusFormDeleteView(LoginRequiredMixin, View):
-
-    login_url = 'login'
+class StatusFormDeleteView(AuthRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         status_id = kwargs.get('id')
