@@ -4,11 +4,11 @@ set -o errexit
 
 poetry install
 
-python python-project-52/manage.py collectstatic --no-input
-python python-project-52/manage.py makemigrations
-python python-project-52/manage.py migrate
+poetry run python3 manage.py collectstatic --no-input
+poetry run python3 manage.py makemigrations
+poetry run python3 manage.py migrate
 
 if [[ $CREATE_SUPERUSER ]];
 then
-  python python-project-52/manage.py createsuperuser --no-input
+  poetry run python3 manage.py createsuperuser --no-input
 fi
