@@ -8,6 +8,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class IndexView(LoginRequiredMixin, View):
 
+    login_url = 'login'
+
     def get(self, request, *args, **kwargs):
         statuses = Status.objects.all()
         return render(request, 'statuses/index.html', context={
@@ -16,6 +18,8 @@ class IndexView(LoginRequiredMixin, View):
 
 
 class StatusFormCreateView(LoginRequiredMixin, View):
+
+    login_url = 'login'
 
     def get(self, request, *args, **kwargs):
         form = StatusForm()
@@ -31,6 +35,8 @@ class StatusFormCreateView(LoginRequiredMixin, View):
 
 
 class StatusFormUpdateView(LoginRequiredMixin, View):
+
+    login_url = 'login'
 
     def get(self, request, *args, **kwargs):
         status_id = kwargs.get('id')
@@ -64,6 +70,8 @@ class StatusFormUpdateView(LoginRequiredMixin, View):
 
 
 class StatusFormDeleteView(LoginRequiredMixin, View):
+
+    login_url = 'login'
 
     def get(self, request, *args, **kwargs):
         status_id = kwargs.get('id')
