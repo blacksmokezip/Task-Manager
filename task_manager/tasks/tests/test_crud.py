@@ -1,16 +1,19 @@
 from django.test import TestCase
+from django.contrib.auth.models import User
+
 from task_manager.tasks.models import Task
 from task_manager.statuses.models import Status
-from django.contrib.auth.models import User
+from task_manager.labels.models import Label
 
 
 class TaskCRUDTestCase(TestCase):
-    fixtures = ['task.json', 'status.json', 'user.json']
+    fixtures = ['task.json', 'status.json', 'user.json', 'label.json']
 
     def setUp(self) -> None:
         self.task = Task.objects.get(pk=1)
         self.status = Status.objects.get(pk=1)
         self.user = User.objects.get(pk=1)
+        self.label = Label.objects.get(pk=1)
 
     def test_create_task(self):
         self.assertEqual(self.task.name, 'Do')
