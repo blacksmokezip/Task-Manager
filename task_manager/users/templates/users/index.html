@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %}Менеджер задач{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans 'Task manager' %}{% endblock %}
 
 {% block content %}
 <div class="container wrapper flex-grow-1">
@@ -11,9 +13,9 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Имя пользователя</th>
-      <th>Полное имя</th>
-      <th>Дата создания</th>
+      <th>{% trans 'Username' %}</th>
+      <th>{% trans 'Full name' %}</th>
+      <th>{% trans 'Creation date' %}</th>
       <th></th>
     </tr>
   </thead>
@@ -26,9 +28,9 @@
         <td>{{ user.get_full_name }}</td>
         <td>{{ user.date_joined }}</td>
         <td>
-          <a href="{% url 'users_update' user.id %}">Изменить</a>
+          <a href="{% url 'users_update' user.id %}">{% trans 'Update' %}</a>
           <br>
-          <a href="{% url 'users_delete' user.id %}">Удалить</a>
+          <a href="{% url 'users_delete' user.id %}">{% trans 'Delete' %}</a>
         </td>
       </tr>
     {% endfor %}
