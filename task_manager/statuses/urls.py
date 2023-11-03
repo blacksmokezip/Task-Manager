@@ -15,7 +15,7 @@ urlpatterns = [
         name='statuses_update'
     ),
     path(
-        '<int:id>/delete/',
+        '<int:pk>/delete/',
         views.StatusFormDeleteView.as_view(),
         name='statuses_delete'
     ),
