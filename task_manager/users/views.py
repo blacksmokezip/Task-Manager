@@ -2,7 +2,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.contrib.auth.models import User
+from task_manager.users.models import User
 from django.views.generic import DeleteView
 from django.utils.translation import gettext_lazy as _
 

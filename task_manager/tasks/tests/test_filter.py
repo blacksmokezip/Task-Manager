@@ -1,5 +1,5 @@
 from django.test import TestCase
-from django.contrib.auth.models import User
+from task_manager.users.models import User
 from django.urls import reverse_lazy
 
 from task_manager.tasks.models import Task

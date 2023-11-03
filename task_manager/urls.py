@@ -27,8 +27,8 @@ urlpatterns = [
     path('labels/', include('task_manager.labels.urls')),
     path('render/', include('render.urls')),
     path('admin/', admin.site.urls),
-    path('login/', views.Login.as_view(), name="login"),
-    path('logout/', views.logout_user, name="logout"),
+    path('login/', views.UserLoginView.as_view(), name="login"),
+    path('logout/', views.UserLogoutView.as_view(), name="logout"),
 ]
 
 urlpatterns += i18n_patterns(
