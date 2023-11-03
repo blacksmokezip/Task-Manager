@@ -106,8 +106,8 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = eval(os.environ.get('DATABASE'))
+db = os.environ.get('DATABASE')
+DATABASES = eval(db)
 
 
 # Password validation
