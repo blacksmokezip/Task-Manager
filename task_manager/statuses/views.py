@@ -69,10 +69,12 @@ class StatusFormUpdateView(AuthRequiredMixin, View):
         )
 
 
-class StatusFormDeleteView(AuthRequiredMixin,
-                       DeleteProtectionMixin,
-                       SuccessMessageMixin,
-                       DeleteView):
+class StatusFormDeleteView(
+    AuthRequiredMixin,
+    DeleteProtectionMixin,
+    SuccessMessageMixin,
+    DeleteView
+):
 
     template_name = 'statuses/delete.html'
     model = Status
