@@ -12,16 +12,26 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='status',
-            options={'verbose_name': 'Status', 'verbose_name_plural': 'Statuses'},
+            options={
+                'verbose_name': 'Status',
+                'verbose_name_plural': 'Statuses'
+            },
         ),
         migrations.AlterField(
             model_name='status',
             name='created_at',
-            field=models.DateTimeField(auto_now_add=True, verbose_name='Creation date'),
+            field=models.DateTimeField(
+                auto_now_add=True,
+                verbose_name='Creation date'
+            ),
         ),
         migrations.AlterField(
             model_name='status',
             name='name',
-            field=models.CharField(max_length=100, unique=True, verbose_name='Name'),
+            field=models.CharField(
+                max_length=100,
+                unique=True,
+                verbose_name='Name'
+            ),
         ),
     ]

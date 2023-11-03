@@ -12,34 +12,34 @@ class Task(models.Model):
         max_length=150,
         blank=False,
         unique=True,
-        verbose_name='Имя'
+        verbose_name=_('Name')
     )
     description = models.TextField(
         max_length=10000,
         blank=True,
-        verbose_name='Описание'
+        verbose_name=_('Description')
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name='Дата создания'
+        verbose_name=_('Creation date')
     )
     author = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
         related_name='author',
-        verbose_name='Автор'
+        verbose_name=_('Author')
     )
     status = models.ForeignKey(
         Status,
         on_delete=models.PROTECT,
         related_name='statuses',
-        verbose_name='Статус'
+        verbose_name=_('Status')
     )
     executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
         related_name='executor',
-        verbose_name='Исполнитель'
+        verbose_name=_('Executor')
     )
     labels = models.ManyToManyField(
         Label,
@@ -47,15 +47,15 @@ class Task(models.Model):
         through_fields=('task', 'label'),
         blank=True,
         related_name='labels',
-        verbose_name='Метки'
+        verbose_name=_('Labels')
     )
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'Задача'
-        verbose_name_plural = 'Задачи'
+        verbose_name = _('Task')
+        verbose_name_plural = _('Tasks')
 
 
 class TaskLabelRelation(models.Model):

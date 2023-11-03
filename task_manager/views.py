@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 
 def index(request):
@@ -19,11 +20,11 @@ class Login(LoginView):
         return dict(list(context.items()))
 
     def get_success_url(self):
-        messages.success(self.request, 'Вы залогинены')
+        messages.success(self.request, _('You are logged in'))
         return reverse_lazy('main')
 
 
 def logout_user(request):
     logout(request)
-    messages.info(request, 'Вы разлогинены')
+    messages.info(request, _('You are logged out'))
     return redirect('main')

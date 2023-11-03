@@ -7,16 +7,16 @@ class Label(models.Model):
         max_length=150,
         unique=True,
         blank=False,
-        verbose_name='Имя',
+        verbose_name=_('Name'),
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name='Дата создания'
+        verbose_name=_('Creation date')
     )
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'Метка'
-        verbose_name_plural = 'Метки'
+        verbose_name = _('Label')
+        verbose_name_plural = _('Labels')

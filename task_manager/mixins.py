@@ -3,7 +3,6 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import ProtectedError
 from django.shortcuts import redirect
-from django.utils.translation import gettext as _
 
 
 class AuthRequiredMixin(LoginRequiredMixin):
@@ -67,11 +66,3 @@ class AuthorDeletionMixin(UserPassesTestMixin):
     def handle_no_permission(self):
         messages.error(self.request, self.author_message)
         return redirect(self.author_url)
-
-    # Another way using dispatch function without UserPassesTestMixin:
-
-    # def dispatch(self, request, *args, **kwargs):
-    #     if request.user.id != self.get_object().author.id:
-    #         messages.error(self.request, self.author_message)
-    #         return redirect(self.author_url)
-    #     return super().dispatch(request, *args, **kwargs)

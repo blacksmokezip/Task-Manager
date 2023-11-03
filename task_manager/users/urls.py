@@ -4,7 +4,13 @@ from task_manager.users import views
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='users'),
-    path('create/', views.UserFormCreateView.as_view(), name='users_create'),
-    path('<int:id>/update/', views.UserFormUpdateView.as_view(), name='users_update'),
-    path('<int:pk>/delete/', views.UserFormDeleteView.as_view(), name='users_delete'),
+    path('create/',
+         views.UserFormCreateView.as_view(),
+         name='users_create'),
+    path('<int:id>/update/',
+         views.UserFormUpdateView.as_view(),
+         name='users_update'),
+    path('<int:pk>/delete/',
+         views.UserFormDeleteView.as_view(),
+         name='users_delete'),
 ]

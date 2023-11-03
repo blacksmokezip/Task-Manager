@@ -9,7 +9,10 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('statuses', '0002_alter_status_options_alter_status_created_at_and_more'),
+        (
+            'statuses',
+            '0002_alter_status_options_alter_status_created_at_and_more'
+        ),
         ('tasks', '0001_initial'),
     ]
 
@@ -21,31 +24,57 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='task',
             name='author',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='author', to=settings.AUTH_USER_MODEL, verbose_name='Автор'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name='author',
+                to=settings.AUTH_USER_MODEL,
+                verbose_name='Автор'
+            ),
         ),
         migrations.AlterField(
             model_name='task',
             name='created_at',
-            field=models.DateTimeField(auto_now_add=True, verbose_name='Дата создания'),
+            field=models.DateTimeField(
+                auto_now_add=True,
+                verbose_name='Дата создания'
+            ),
         ),
         migrations.AlterField(
             model_name='task',
             name='description',
-            field=models.TextField(blank=True, max_length=10000, verbose_name='Описание'),
+            field=models.TextField(
+                blank=True,
+                max_length=10000,
+                verbose_name='Описание'
+            ),
         ),
         migrations.AlterField(
             model_name='task',
             name='executor',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='executor', to=settings.AUTH_USER_MODEL, verbose_name='Исполнитель'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name='executor',
+                to=settings.AUTH_USER_MODEL,
+                verbose_name='Исполнитель'
+            ),
         ),
         migrations.AlterField(
             model_name='task',
             name='name',
-            field=models.CharField(max_length=150, unique=True, verbose_name='Имя'),
+            field=models.CharField(
+                max_length=150,
+                unique=True,
+                verbose_name='Имя'
+            ),
         ),
         migrations.AlterField(
             model_name='task',
             name='status',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='statuses', to='statuses.status', verbose_name='Статус'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name='statuses',
+                to='statuses.status',
+                verbose_name='Статус'
+            ),
         ),
     ]
