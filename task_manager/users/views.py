@@ -1,7 +1,5 @@
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views import View
 from task_manager.users.models import User
 from django.views.generic import DeleteView, UpdateView, CreateView, ListView
 from django.utils.translation import gettext_lazy as _
@@ -27,8 +25,7 @@ class UserFormCreateView(SuccessMessageMixin, CreateView):
     success_message = _('User is successfully registered')
 
 
-class UserFormUpdateView(AuthRequiredMixin, UserPermissionMixin,
-                     SuccessMessageMixin, UpdateView):
+class UserFormUpdateView(AuthRequiredMixin, UserPermissionMixin, SuccessMessageMixin, UpdateView):
 
     template_name = 'users/update.html'
     model = User
