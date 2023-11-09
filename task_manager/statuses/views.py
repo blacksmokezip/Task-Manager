@@ -2,7 +2,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import DeleteView
+from django.views.generic import DeleteView, ListView, CreateView, UpdateView
 
 from task_manager.statuses.models import Status
 from task_manager.statuses.forms import StatusForm
@@ -12,61 +12,29 @@ from django.utils.translation import gettext_lazy as _
 from task_manager.mixins import AuthRequiredMixin, DeleteProtectionMixin
 
 
-class IndexView(AuthRequiredMixin, View):
+class IndexView(AuthRequiredMixin, ListView):
 
-    def get(self, request, *args, **kwargs):
-        statuses = Status.objects.all()
-        return render(request, 'statuses/index.html', context={
-            'statuses': statuses,
-        })
+    template_name = 'statuses/index.html'
+    model = Status
+    context_object_name = 'statuses'
 
 
-class StatusFormCreateView(AuthRequiredMixin, View):
+class StatusFormCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
 
-    def get(self, request, *args, **kwargs):
-        form = StatusForm()
-        return render(request, 'statuses/create.html', {'form': form})
-
-    def post(self, request, *args, **kwargs):
-        form = StatusForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, _('Status successfully created'))
-            return redirect('statuses')
-        return render(request, 'statuses/create.html', {'form': form})
+    template_name = 'statuses/create.html'
+    model = Status
+    form_class = StatusForm
+    success_url = reverse_lazy('statuses')
+    success_message = _('Status successfully created')
 
 
-class StatusFormUpdateView(AuthRequiredMixin, View):
+class StatusFormUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
 
-    def get(self, request, *args, **kwargs):
-        status_id = kwargs.get('id')
-        status = Status.objects.get(id=status_id)
-        form = StatusForm(instance=status)
-        return render(
-            request,
-            'statuses/update.html',
-            {
-                'form': form,
-                'status_id': status_id
-            }
-        )
-
-    def post(self, request, *args, **kwargs):
-        status_id = kwargs.get('id')
-        status = Status.objects.get(id=status_id)
-        form = StatusForm(request.POST, instance=status)
-        if form.is_valid():
-            form.save()
-            messages.success(request, _('Status successfully changed'))
-            return redirect('statuses')
-        return render(
-            request,
-            'statuses/update.html',
-            {
-                'form': form,
-                'status_id': status_id
-            }
-        )
+    template_name = 'statuses/update.html'
+    model = Status
+    form_class = StatusForm
+    success_url = reverse_lazy('statuses')
+    success_message = _('Status successfully changed')
 
 
 class StatusFormDeleteView(

@@ -10,7 +10,7 @@ urlpatterns = [
         name='statuses_create'
     ),
     path(
-        '<int:id>/update/',
+        '<int:pk>/update/',
         views.StatusFormUpdateView.as_view(),
         name='statuses_update'
     ),

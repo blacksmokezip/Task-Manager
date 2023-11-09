@@ -10,7 +10,7 @@
       <h1 class="my-4">
         {% trans 'Update user' %}
       </h1>
-<form action="{% url 'users_update' user_id %}" method="post">
+<form action="{% url 'users_update' user.id %}" method="post">
     {% csrf_token %}
     {% bootstrap_form form %}
     <input class="btn btn-primary" type="submit" value="{% trans 'Update' %}">

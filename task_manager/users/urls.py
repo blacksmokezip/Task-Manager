@@ -7,7 +7,7 @@ urlpatterns = [
     path('create/',
          views.UserFormCreateView.as_view(),
          name='users_create'),
-    path('<int:id>/update/',
+    path('<int:pk>/update/',
          views.UserFormUpdateView.as_view(),
          name='users_update'),
     path('<int:pk>/delete/',
