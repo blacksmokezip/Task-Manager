@@ -365,3 +365,7 @@ msgstr "Вход"
 #: task_manager/views.py:28 task_manager/views.py:31
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#: task_manager/templates/index.html:15
+msgid "A task management web application built with Python and Django framework. It allows you to set tasks, assign performers and change their statuses."
+msgstr "Веб-приложение для управления задачами, созданное на основе Python и фреймворка Django. Оно позволяет вам ставить задачи, назначать исполнителей и изменять их статусы."
