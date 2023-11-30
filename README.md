@@ -30,18 +30,34 @@ Clone the project:
 ```bash
 >> git clone https://github.com/blacksmokezip/Task-Manager.git && cd Task-Manager
 ```
-
 Create `.env` file in the root folder and add following variables:
 ```dotenv
 SECRET_KEY={your secret key} # Django will refuse to start if SECRET_KEY is not set
 ```
-
 And run:
 ```shell
 >> docker-compose up
 ```
-
 The server is running at http://0.0.0.0:8000
+
+# OR
+
+Clone the project:
+```bash
+>> git clone https://github.com/blacksmokezip/Task-Manager.git && cd Task-Manager
+```
+Create `.env` file in the root folder and add following variables:
+```dotenv
+SECRET_KEY={your secret key} # Django will refuse to start if SECRET_KEY is not set
+```
+Build:
+```bash
+./build.sh
+```
+And run:
+```bash
+make start
+```
 
 ---
 
