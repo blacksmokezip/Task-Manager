@@ -33,6 +33,7 @@ Clone the project:
 Create `.env` file in the root folder and add following variables:
 ```dotenv
 SECRET_KEY={your secret key} # Django will refuse to start if SECRET_KEY is not set
+DATABASE_URL="{your database url}"
 ```
 And run:
 ```shell
@@ -49,6 +50,7 @@ Clone the project:
 Create `.env` file in the root folder and add following variables:
 ```dotenv
 SECRET_KEY={your secret key} # Django will refuse to start if SECRET_KEY is not set
+DATABASE_URL="{your database url}"
 ```
 Build:
 ```bash
