@@ -30,7 +30,7 @@ Clone the project:
 ```bash
 >> git clone https://github.com/blacksmokezip/Task-Manager.git && cd Task-Manager
 ```
-Create `.env` file in the root folder and add following variables:
+Create `.env` file in the root directory and add following variables:
 ```dotenv
 SECRET_KEY={your secret key} # Django will refuse to start if SECRET_KEY is not set
 DATABASE_URL="{your database url}"
